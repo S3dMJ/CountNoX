@@ -1,0 +1,19 @@
+module counter #(parameter SIZE=5)
+	(input  [4:0]  numberIn,
+	 output done,
+	 input reset,
+    input clock);
+
+	reg [SIZE-1:0] count;
+	
+	assign done = (count == numberIn);
+	
+	always @(posedge clock)
+	begin
+		if(reset == 1'b1)         
+				count <= 1;
+		else 	count <= count + 5'd1;
+	end
+
+
+endmodule

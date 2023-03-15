@@ -1,0 +1,47 @@
+//
+// Testbench for fibonacci top level design
+// input is n, to generate the nth fibonacci number
+// 
+// Saad A. Al-Jehani [1935151]
+// Jan, 7th, 2023
+
+module test;
+
+	reg [7:0] x;
+	reg go;
+	reg reset;
+	reg clk;
+	wire done;
+	wire [7:0] freq;
+
+	Top_Level_design uut
+	(
+		.x(x), 
+		.freq(freq), 
+		.done(done), 
+		.go(go), 
+		.reset(reset), 
+		.clk(clk)
+	);
+
+	
+	always 
+	  #5 clk = ~clk;
+
+	initial begin
+		x = 0;
+		go = 0;
+		reset = 1;
+		clk = 0;
+		@(posedge clk);
+		x = 8'b1;
+		go = 1
+		@(posedge clk);
+		go = 0;
+		wait(done);
+		#15;
+		$finish;
+
+	end
+      
+endmodule

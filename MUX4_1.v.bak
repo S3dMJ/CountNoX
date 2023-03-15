@@ -1,0 +1,24 @@
+module MUX4_1(
+	 input     [1:0] select,
+	 output reg   data,
+	 input  go,
+	 input  done,
+	 input  ax,
+	 input  one
+	 
+	 
+);
+
+
+always @(select)
+     case(select)
+        2'b00: data = go;
+		  2'b01: data = done;
+		  2'b10: data = ax;
+		  2'b11: data = one;
+
+
+     endcase
+
+
+endmodule

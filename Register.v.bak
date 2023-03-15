@@ -1,0 +1,27 @@
+// 
+// Register
+// input: Data, clk, 
+//
+//
+//
+
+module register #(parameter SIZE=16)
+	(input  [SIZE-1:0] inData,
+	 output [SIZE-1:0] outData,
+    input enb,
+	 input set,
+	 input reset,
+    input clock);
+
+	reg [SIZE-1:0] data;
+	
+	assign outData  = data;
+	
+	always @(posedge clock)
+	begin
+		if(reset == 1'b1)         data <= 0;
+		else if(set == 1'b1)    	data <= 1;
+			  else if(enb) data <= inData;
+	end
+
+endmodule

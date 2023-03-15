@@ -1,0 +1,16 @@
+module register_1 
+	(input   inData,
+	 output  outData,
+    input load,
+    input clk);
+
+	reg  data;
+	
+	assign outData  = data;
+	
+	always @(posedge clk)
+	begin
+		if(load) data <= inData;
+	end
+
+endmodule
